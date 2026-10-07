@@ -56,7 +56,6 @@ h2 span{color:var(--red)}
 @media(max-width:850px){.nav-links{display:none}.about-grid,.notes-grid{grid-template-columns:1fr;gap:35px}.project-grid{grid-template-columns:1fr}.poster-card{min-height:300px}.hero{min-height:700px}.poster-credit{left:18px;text-align:left}}
 @media(max-width:560px){.container{width:calc(100% - 28px)}.section{padding:75px 0}h1{font-size:4.4rem}.hero-sub{font-size:1.05rem}.footer .container{flex-direction:column;align-items:flex-start}.actions{flex-wrap:wrap}}
 
-/* extra poster / newspaper treatment */
 .quote-band{background:#1f1813;color:#f1dca8;border-top:7px solid var(--red);border-bottom:7px solid var(--red);padding:22px 0}
 .quote-inner{width:min(calc(100% - 42px),var(--max));margin:auto;display:flex;justify-content:space-between;align-items:center;gap:30px}
 .quote-inner span{font-size:1.45rem;font-weight:900}.quote-inner b{font-size:.85rem;color:#cdbf9f}
@@ -79,7 +78,6 @@ h2 span{color:var(--red)}
  .manifesto-grid{gap:45px}.big-red{margin-bottom:35px}
 }
 
-/* site-wide poster atmosphere */
 body{background-color:#8f171b;background-image:linear-gradient(rgba(74,8,8,.42),rgba(74,8,8,.42)),url("https://commons.wikimedia.org/wiki/Special:FilePath/Carry_the_Revolution_through_to_the_End!_(将革命进行到底!_JIANG_GE_MING_JIN_XING_DAO_DI_!)_(8161069207).jpg");background-attachment:fixed;background-size:cover;background-position:center;position:relative}
 body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 20% 20%,rgba(255,224,160,.16),transparent 25%),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 5px);pointer-events:none}
 .section,.subpage{background:rgba(242,232,206,.94)}
@@ -125,43 +123,39 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .home-footer .container{display:flex;justify-content:space-between;gap:20px}
 @media(max-width:700px){.home-content{padding-top:125px}.home-hero h1{font-size:4.5rem}.home-footer .container{display:grid;gap:4px}.home-header .nav-links{display:none}.poster-credit{left:14px;right:auto;text-align:left}}
 
-
-/* 首页两侧毛笔对联 */
+/* 首页对联：上联左、下联右；每边始终是一列，不拆成两列 */
 .home-page .couplet{
-  position:absolute;
-  z-index:20;
+  position:absolute !important;
   top:50%;
   transform:translateY(-50%);
+  z-index:50 !important;
+  display:block !important;
+  width:1.15em;
+  height:auto;
   writing-mode:vertical-rl;
   text-orientation:upright;
+  white-space:nowrap;
+  word-break:keep-all;
+  overflow:visible;
   font-family:"Ma Shan Zheng","STKaiti","KaiTi","FZKai-Z03","Kaiti SC",cursive;
   font-size:clamp(2.7rem,5.2vw,5.8rem);
   font-weight:400;
-  line-height:1.02;
-  letter-spacing:.08em;
-  color:#f5dfaa;
-  -webkit-text-stroke:.35px rgba(70,5,3,.35);
+  line-height:1;
+  letter-spacing:0;
+  color:#f7e2aa !important;
   text-shadow:3px 5px 0 rgba(70,5,3,.78),0 0 10px rgba(0,0,0,.28);
-  filter:contrast(1.12);
-  white-space:nowrap;
   pointer-events:none;
 }
-.home-page .couplet-left{left:clamp(18px,3.5vw,58px)}
-.home-page .couplet-right{right:clamp(18px,3.5vw,58px)}
-.home-page .couplet:after{
-  content:"";
-  display:block;
-  width:.16em;
-  height:2.5em;
-  margin:.7em auto 0;
-  background:#a8161b;
-  box-shadow:1px 0 0 rgba(247,226,168,.25);
-  opacity:.95;
-}
+.home-page .couplet-left{left:clamp(24px,4vw,70px) !important}
+.home-page .couplet-right{right:clamp(24px,4vw,70px) !important}
+
+/* 去掉装饰竖线，避免看起来像第二列 */
+.home-page .couplet:after{display:none}
+
 @media(max-width:1100px){
   .home-page .couplet{font-size:clamp(2.2rem,4.6vw,4.2rem)}
-  .home-page .couplet-left{left:14px}
-  .home-page .couplet-right{right:14px}
+  .home-page .couplet-left{left:14px !important}
+  .home-page .couplet-right{right:14px !important}
 }
 @media(max-width:760px){
   .home-page .couplet{
@@ -170,14 +164,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
     bottom:92px;
     transform:none;
   }
-  .home-page .couplet-left{left:12px}
-  .home-page .couplet-right{right:12px}
+  .home-page .couplet-left{left:10px !important}
+  .home-page .couplet-right{right:10px !important}
   .home-page .home-content{padding-left:52px;padding-right:52px}
-}
-
-/* 强制确保首页对联位于海报和正文之上 */
-.home-page .couplet{display:block !important;visibility:visible !important;opacity:1 !important;position:absolute !important;z-index:50 !important;color:#f7e2aa !important;}
-@media(min-width:1101px){
-  .home-page .couplet-left{left:clamp(24px,4vw,70px) !important;}
-  .home-page .couplet-right{right:clamp(24px,4vw,70px) !important;}
 }
