@@ -123,7 +123,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .home-footer .container{display:flex;justify-content:space-between;gap:20px}
 @media(max-width:700px){.home-content{padding-top:125px}.home-hero h1{font-size:4.5rem}.home-footer .container{display:grid;gap:4px}.home-header .nav-links{display:none}.poster-credit{left:14px;right:auto;text-align:left}}
 
-/* 首页对联：上联左、下联右；每边始终是一列，不拆成两列 */
+/* 首页对联：上联右、下联左；每边始终是一列，不拆成两列 */
 .home-page .couplet{
   position:absolute !important;
   top:50%;
