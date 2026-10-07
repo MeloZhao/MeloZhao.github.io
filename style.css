@@ -102,3 +102,24 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.method-grid article{padding:30px;border:3px solid var(--ink);background:#efe1bd}.method-grid b{font-size:1.35rem}.method-grid p{color:var(--muted)}
 .notes-board{display:grid;grid-template-columns:1fr 1fr;gap:22px}.notes-board article{padding:38px;background:#f3e4b9;border-top:9px solid var(--red);min-height:250px}.notes-board article:nth-child(2){transform:rotate(1deg)}.notes-board article:nth-child(3){transform:rotate(-.7deg)}.notes-board small{font-weight:900;color:var(--red);letter-spacing:.1em}.notes-board h2{font-size:2.2rem;margin:18px 0}.notes-board p{color:var(--muted)}
 @media(max-width:850px){.sub-grid,.method-grid,.notes-board{grid-template-columns:1fr}.page-title{font-size:4rem}.archive-item{display:block}.archive-item>b{display:block;margin-top:25px}.timeline div{grid-template-columns:1fr}.timeline span{margin-top:5px}}
+
+.home-page{background:#210807;color:#fff}
+.home-header{position:absolute;top:0;left:0;right:0;background:rgba(30,5,4,.2);border-bottom:2px solid rgba(255,236,190,.35);z-index:10}
+.home-header .brand,.home-header .nav-links a{color:#fff}.home-header .nav-links a:hover{color:#f0cf86}
+.home-hero{min-height:calc(100vh - 58px);position:relative;overflow:hidden;display:flex;align-items:center;background:#360806}
+.home-hero .hero-image{position:absolute;inset:0;background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/Carry_the_Revolution_through_to_the_End!_(将革命进行到底!_JIANG_GE_MING_JIN_XING_DAO_DI_!)_(8161069207).jpg");background-size:cover;background-position:center 24%;filter:sepia(.12) saturate(.9) contrast(1.08)}
+.hero-grain{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px),radial-gradient(circle at 80% 20%,rgba(255,220,150,.15),transparent 24%);mix-blend-mode:screen}
+.hero-red{position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,3,2,.92) 0%,rgba(81,8,6,.73) 38%,rgba(120,13,12,.22) 75%),linear-gradient(0deg,rgba(0,0,0,.35),transparent 50%)}
+.home-content{position:relative;z-index:2;padding:150px 0 70px}
+.hero-kicker{margin:0 0 25px;color:#f0d18a;font-weight:900;letter-spacing:.18em;font-size:.76rem}
+.home-hero h1{font-size:clamp(5rem,12vw,11rem);line-height:.79;letter-spacing:-.09em;margin:0;text-shadow:7px 8px 0 rgba(40,0,0,.35)}
+.home-hero h1 em{color:#f1d18a;font-style:normal}
+.home-slogan{font-size:clamp(1rem,2vw,1.35rem);font-weight:800;line-height:1.75;margin:35px 0 35px;color:#f5e8c5}
+.home-menu{width:min(650px,100%);border-top:2px solid rgba(245,232,197,.55)}
+.home-menu a{display:grid;grid-template-columns:55px 1fr 30px;align-items:center;padding:14px 5px;border-bottom:1px solid rgba(245,232,197,.35);color:#fff;font-weight:900;font-size:1.05rem}
+.home-menu a:hover{background:rgba(181,31,36,.72);padding-left:15px}.home-menu b{color:#f0d18a;font-size:.75rem}.home-menu i{font-style:normal;color:#f0d18a}
+.home-github{display:flex;gap:25px;margin-top:25px;align-items:center;font:800 .72rem/1 sans-serif;letter-spacing:.12em;color:#dbc999}
+.home-github a{color:#f0d18a}.poster-credit{position:absolute;right:18px;bottom:15px;z-index:3;text-align:right;color:rgba(255,245,220,.65);font:10px/1.4 sans-serif}
+.home-footer{background:#1c0b08;border-top:3px solid #9d171c;color:#e6d3a0;padding:14px 0;font-size:.75rem;font-weight:800;letter-spacing:.06em}
+.home-footer .container{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:700px){.home-content{padding-top:130px}.home-hero h1{font-size:4.8rem}.home-footer .container{display:grid;gap:4px}.home-header .nav-links{display:none}.poster-credit{left:14px;right:auto;text-align:left}}
