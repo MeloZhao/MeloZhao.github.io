@@ -54,3 +54,26 @@ h2 span{color:var(--red)}
 
 @media(max-width:850px){.nav-links{display:none}.about-grid,.notes-grid{grid-template-columns:1fr;gap:35px}.project-grid{grid-template-columns:1fr}.poster-card{min-height:300px}.hero{min-height:700px}.poster-credit{left:18px;text-align:left}}
 @media(max-width:560px){.container{width:calc(100% - 28px)}.section{padding:75px 0}h1{font-size:4.4rem}.hero-sub{font-size:1.05rem}.footer .container{flex-direction:column;align-items:flex-start}.actions{flex-wrap:wrap}}
+
+/* extra poster / newspaper treatment */
+.quote-band{background:#1f1813;color:#f1dca8;border-top:7px solid var(--red);border-bottom:7px solid var(--red);padding:22px 0}
+.quote-inner{width:min(calc(100% - 42px),var(--max));margin:auto;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.quote-inner span{font-size:1.45rem;font-weight:900}.quote-inner b{font-size:.85rem;color:#cdbf9f}
+.poster-strip{display:grid;grid-template-columns:repeat(3,1fr);min-height:330px}
+.poster-tile{padding:35px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;border-right:4px solid #f2e8ce}
+.poster-tile:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 15%,rgba(255,220,130,.35),transparent 28%),repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 5px);mix-blend-mode:multiply}
+.tile-a{background:linear-gradient(135deg,#9e171c,#d33a32);color:#f7e6b8}
+.tile-b{background:linear-gradient(135deg,#ead59e,#c9aa68);color:#67171a}
+.tile-c{background:linear-gradient(135deg,#2d2119,#6c251f);color:#f3dda5}
+.poster-tile span,.poster-tile small{position:relative;z-index:1}
+.poster-tile span{font-size:clamp(2.4rem,5vw,5rem);font-weight:900;line-height:.95;letter-spacing:-.06em}
+.poster-tile small{margin-top:18px;font-size:1rem;font-weight:800}
+.manifesto{background:#a7181d;color:#f7e6b8;padding:85px 0;border-bottom:8px solid #7d1015}
+.manifesto-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.big-red{font-size:clamp(4rem,10vw,9rem);font-weight:900;line-height:.8;letter-spacing:-.08em;text-shadow:5px 5px 0 #711015}
+.manifesto p{font-size:1.2rem;font-weight:800;max-width:560px}.manifesto .small{font-size:.9rem;color:#e4c986}
+@media(max-width:850px){
+ .quote-inner,.manifesto-grid{display:block}.quote-inner b{display:block;margin-top:7px}
+ .poster-strip{grid-template-columns:1fr;min-height:0}.poster-tile{min-height:220px;border-right:0;border-bottom:4px solid #f2e8ce}
+ .manifesto-grid{gap:45px}.big-red{margin-bottom:35px}
+}
