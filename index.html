@@ -1,158 +1,116 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Melo Zhao — Computational Protein Engineering and AI-driven Protein Design">
-  <title>Melo Zhao | Computational Protein Engineering</title>
+  <meta name="description" content="Melo Zhao 的个人网站">
+  <title>赵某人｜将革命进行到底</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-header">
   <nav class="nav container">
-    <a class="brand" href="#home">Melo Zhao</a>
+    <a class="brand" href="#home">赵某人</a>
     <div class="nav-links">
-      <a href="#research">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#methods">Methods</a>
-      <a href="#skills">Academic Skills</a>
-      <a href="#publications">Publications</a>
+      <a href="#about">关于我</a><a href="#projects">折腾的东西</a>
+      <a href="#lab">实验室</a><a href="#notes">随便写写</a>
     </div>
   </nav>
 </header>
 
 <main id="home">
-  <section class="hero container">
-    <div class="hero-copy">
-      <p class="eyebrow">COMPUTATIONAL PROTEIN ENGINEERING</p>
-      <h1>Designing better proteins<br><span>with computation.</span></h1>
-      <p class="lead">
-        I work on AI-driven protein engineering, enzyme cyclization, molecular dynamics,
-        and computational design workflows that connect structure prediction with
-        experimentally testable candidates.
-      </p>
+  <section class="hero">
+    <div class="hero-image" aria-hidden="true"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <p class="hero-kicker">个人主页 · 不务正业研究员 · 继续折腾</p>
+      <h1>将革命<br><em>进行到底！</em></h1>
+      <p class="hero-sub">搞蛋白、搞代码、搞模拟。<br>有空就折腾，没空创造条件也要折腾。</p>
       <div class="actions">
-        <a class="button primary" href="#projects">Explore projects</a>
-        <a class="button secondary" href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="button red" href="#projects">看看我在折腾什么</a>
+        <a class="button ghost" href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
-    <div class="hero-card">
-      <div class="orb"></div>
-      <div class="hero-card-text">
-        <strong>Research focus</strong>
-        <span>Protein design</span>
-        <span>Enzyme engineering</span>
-        <span>MD simulation</span>
-        <span>AI-assisted discovery</span>
-      </div>
-    </div>
+    <div class="poster-credit">背景图：1965《将革命进行到底》，哈琼文｜Thomas Fisher Rare Book Library, University of Toronto</div>
   </section>
 
-  <section id="research" class="section container">
-    <div class="section-heading">
-      <p class="eyebrow">RESEARCH</p>
-      <h2>From molecular structure to design.</h2>
-    </div>
-    <div class="grid three">
-      <article class="card">
-        <div class="number">01</div>
-        <h3>AI-driven Protein Design</h3>
-        <p>Structure prediction, sequence design, geometric screening, and multi-stage computational prioritization.</p>
-      </article>
-      <article class="card">
-        <div class="number">02</div>
-        <h3>Protein Cyclization</h3>
-        <p>Computational investigation of SpyTag/SpyCatcher-mediated cyclization and the relationship between stability and active-site preservation.</p>
-      </article>
-      <article class="card">
-        <div class="number">03</div>
-        <h3>Molecular Dynamics</h3>
-        <p>Atomistic simulation and network-based analysis of protein stability, flexibility, interactions, and catalytic-site behavior.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="projects" class="section section-alt">
+  <section id="about" class="section paper">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">FEATURED PROJECTS</p>
-        <h2>Research systems I am building.</h2>
+      <p class="stamp">个人简介</p>
+      <div class="about-grid">
+        <div>
+          <h2>先把事情搞明白，<br><span>然后把它做出来。</span></h2>
+        </div>
+        <div class="copy">
+          <p>这里不是正式简历，也不是实验室官网。这是我的个人据点。</p>
+          <p>主要折腾计算蛋白工程、酶设计、蛋白质环化、分子动力学，以及把一堆零散工具拼成真正能跑的科研工作流。</p>
+          <p class="red-text">核心精神：少吹牛，多跑程序；先看证据，再下结论。</p>
+        </div>
       </div>
-      <div class="project-list">
-        <a class="project" href="https://github.com/MeloZhao/CyclDesign" target="_blank" rel="noopener">
-          <div>
-            <span class="tag">OPEN SOURCE · PROTEIN DESIGN</span>
-            <h3>CyclDesign</h3>
-            <p>A knowledge-driven computational system for protein cyclization design, structure prediction, geometric screening, and candidate prioritization.</p>
-          </div>
-          <span class="arrow">↗</span>
+    </div>
+  </section>
+
+  <section id="projects" class="section red-section">
+    <div class="container">
+      <p class="stamp light">正在进行</p>
+      <h2>手里的几个“工程”</h2>
+      <div class="project-grid">
+        <a class="poster-card featured" href="https://github.com/MeloZhao/CyclDesign" target="_blank" rel="noopener">
+          <span class="card-no">01</span><span class="card-tag">OPEN SOURCE</span>
+          <h3>CyclDesign</h3>
+          <p>从 PDB / FASTA 出发，自动分析环化可行性、生成设计组合、预测结构、筛选候选，最后把计算结果推到湿实验候选。</p>
+          <strong>进入 GitHub →</strong>
         </a>
-        <article class="project">
-          <div>
-            <span class="tag">COMPUTATIONAL STUDY</span>
-            <h3>AprE2709 Cyclization</h3>
-            <p>Computational analysis of SpyTag/SpyCatcher cyclization variants, linker architecture, conformational stability, and catalytic-site preservation.</p>
-          </div>
-          <span class="arrow">→</span>
+        <article class="poster-card">
+          <span class="card-no">02</span><span class="card-tag">COMPUTATIONAL</span>
+          <h3>AprE2709</h3>
+          <p>SpyTag / SpyCatcher 环化、linker engineering、MD、活性位点几何与稳定性分析。</p>
+          <strong>继续折腾 →</strong>
         </article>
-        <article class="project">
-          <div>
-            <span class="tag">WORKFLOW DEVELOPMENT</span>
-            <h3>Protein Design Pipeline</h3>
-            <p>An integrated workflow connecting structure prediction, sequence design, docking, molecular simulation, and quantitative structural evaluation.</p>
-          </div>
-          <span class="arrow">→</span>
+        <article class="poster-card dark">
+          <span class="card-no">03</span><span class="card-tag">WORKFLOW</span>
+          <h3>Protein Design Pipeline</h3>
+          <p>把 AlphaFold / RF3、ProteinMPNN、LigandMPNN、Rosetta、FoldX、Docking、GROMACS 等工具串起来。</p>
+          <strong>建设中 →</strong>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="methods" class="section container">
-    <div class="section-heading">
-      <p class="eyebrow">COMPUTATIONAL METHODS</p>
-      <h2>A practical computational toolbox.</h2>
-    </div>
-    <div class="method-cloud">
-      <span>GROMACS</span><span>AlphaFold</span><span>RF3</span><span>ProteinMPNN</span>
-      <span>LigandMPNN</span><span>Rosetta</span><span>FoldX</span><span>AutoDock</span>
-      <span>DiffDock</span><span>DCCM</span><span>Network Analysis</span><span>Python</span>
-    </div>
-  </section>
-
-  <section id="skills" class="section section-alt">
+  <section id="lab" class="section paper">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">ACADEMIC SKILLS</p>
-        <h2>Notes, methods, and reproducible practice.</h2>
-      </div>
-      <div class="grid four">
-        <article class="mini-card"><strong>Scientific Writing</strong><span>Logic, structure, evidence, and concise manuscript writing.</span></article>
-        <article class="mini-card"><strong>Scientific Figures</strong><span>Publication-ready plotting, graphical abstracts, and visual hierarchy.</span></article>
-        <article class="mini-card"><strong>MD Analysis</strong><span>RMSD, RMSF, SASA, hydrogen bonds, DCCM, FEL, and trajectory analysis.</span></article>
-        <article class="mini-card"><strong>Protein Structure</strong><span>Structural inspection, catalytic geometry, docking, and design evaluation.</span></article>
+      <p class="stamp">工具箱</p>
+      <h2>能用就用，能自动化就别手动。</h2>
+      <div class="tool-wall">
+        <span>GROMACS</span><span>AlphaFold</span><span>RF3</span><span>ProteinMPNN</span>
+        <span>LigandMPNN</span><span>Rosetta</span><span>FoldX</span><span>AutoDock</span>
+        <span>DiffDock</span><span>DCCM</span><span>NetworkX</span><span>Python</span>
+        <span>PyMOL</span><span>MDAnalysis</span><span>Gaussian</span><span>Multiwfn</span>
       </div>
     </div>
   </section>
 
-  <section id="publications" class="section container">
-    <div class="section-heading">
-      <p class="eyebrow">PUBLICATIONS</p>
-      <h2>Selected research.</h2>
-    </div>
-    <div class="empty-state">
-      <p>Publication list coming soon.</p>
-      <span>This section will be expanded with DOI links, preprints, figures, and project pages.</span>
+  <section id="notes" class="section notebook">
+    <div class="container notes-grid">
+      <div>
+        <p class="stamp">随便写写</p>
+        <h2>这里以后放<br>一些奇奇怪怪的东西。</h2>
+      </div>
+      <div class="notes-list">
+        <div><b>科研随笔</b><span>把踩过的坑记录下来。</span></div>
+        <div><b>代码与脚本</b><span>能省十分钟就值得写。</span></div>
+        <div><b>论文阅读</b><span>有用的东西留下，没用的东西扔掉。</span></div>
+        <div><b>生活杂项</b><span>毕竟这是个人网站，不是简历。</span></div>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="footer">
-  <div class="container footer-inner">
-    <span>© 2026 Melo Zhao</span>
-    <div>
-      <a href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub</a>
-      <a href="#home">Back to top ↑</a>
-    </div>
+  <div class="container">
+    <strong>将革命进行到底。</strong>
+    <span>© 2026 Melo Zhao · 个人网站</span>
+    <a href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
 </footer>
 <script src="script.js"></script>
