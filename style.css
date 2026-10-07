@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap");
 :root{
   --red:#b51f24;--red2:#8f161b;--paper:#f2e8ce;--ink:#241d17;--muted:#685f53;
   --line:#cdbf9f;--black:#211d18;--max:1160px
@@ -126,7 +127,6 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 
 
 /* 首页两侧毛笔对联 */
-@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
 .home-page .couplet{
   position:absolute;
   z-index:4;
@@ -135,12 +135,14 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
   writing-mode:vertical-rl;
   text-orientation:upright;
   font-family:"Ma Shan Zheng","STKaiti","KaiTi","FZKai-Z03","Kaiti SC",cursive;
-  font-size:clamp(2.2rem,4.2vw,4.6rem);
+  font-size:clamp(2.7rem,5.2vw,5.8rem);
   font-weight:400;
-  line-height:1.15;
-  letter-spacing:.12em;
+  line-height:1.02;
+  letter-spacing:.08em;
   color:#f5dfaa;
-  text-shadow:3px 4px 0 rgba(70,5,3,.7),0 0 12px rgba(0,0,0,.22);
+  -webkit-text-stroke:.35px rgba(70,5,3,.35);
+  text-shadow:3px 5px 0 rgba(70,5,3,.78),0 0 10px rgba(0,0,0,.28);
+  filter:contrast(1.12);
   white-space:nowrap;
   pointer-events:none;
 }
@@ -149,20 +151,21 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .home-page .couplet:after{
   content:"";
   display:block;
-  width:.12em;
-  height:2.2em;
-  margin:.65em auto 0;
-  background:#b51f24;
-  opacity:.85;
+  width:.16em;
+  height:2.5em;
+  margin:.7em auto 0;
+  background:#a8161b;
+  box-shadow:1px 0 0 rgba(247,226,168,.25);
+  opacity:.95;
 }
 @media(max-width:1100px){
-  .home-page .couplet{font-size:clamp(1.9rem,3.8vw,3.3rem)}
+  .home-page .couplet{font-size:clamp(2.2rem,4.6vw,4.2rem)}
   .home-page .couplet-left{left:14px}
   .home-page .couplet-right{right:14px}
 }
 @media(max-width:760px){
   .home-page .couplet{
-    font-size:2.15rem;
+    font-size:2.35rem;
     top:auto;
     bottom:92px;
     transform:none;
