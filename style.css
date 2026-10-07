@@ -77,3 +77,28 @@ h2 span{color:var(--red)}
  .poster-strip{grid-template-columns:1fr;min-height:0}.poster-tile{min-height:220px;border-right:0;border-bottom:4px solid #f2e8ce}
  .manifesto-grid{gap:45px}.big-red{margin-bottom:35px}
 }
+
+/* site-wide poster atmosphere */
+body{background-color:#8f171b;background-image:linear-gradient(rgba(74,8,8,.42),rgba(74,8,8,.42)),url("https://commons.wikimedia.org/wiki/Special:FilePath/Carry_the_Revolution_through_to_the_End!_(将革命进行到底!_JIANG_GE_MING_JIN_XING_DAO_DI_!)_(8161069207).jpg");background-attachment:fixed;background-size:cover;background-position:center;position:relative}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 20% 20%,rgba(255,224,160,.16),transparent 25%),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 5px);pointer-events:none}
+.section,.subpage{background:rgba(242,232,206,.94)}
+.site-header{background:rgba(242,232,206,.97)}
+.subpage{min-height:calc(100vh - 130px);padding:100px 0 120px}
+.page-title{font-size:clamp(4rem,9vw,8rem);line-height:.9;margin:0 0 65px;letter-spacing:-.07em}
+.page-title span{color:var(--red)}
+.sub-grid{display:grid;grid-template-columns:1.5fr .7fr;gap:25px;align-items:stretch}
+.sub-paper{padding:38px;background:#f8efda;border:3px solid var(--ink)}
+.sub-paper h2{font-size:2rem;margin-bottom:20px}
+.red-note{background:var(--red);color:#f7e6b8;padding:38px;transform:rotate(1deg)}
+.red-note b{font-size:1.5rem}.red-note ul{padding-left:20px;line-height:2}
+.timeline{margin-top:70px;border-top:4px solid var(--red)}
+.timeline h2{font-size:2.5rem;margin:30px 0}.timeline div{display:grid;grid-template-columns:1fr 2fr;padding:18px 0;border-bottom:2px solid var(--line)}
+.timeline span{color:var(--muted)}
+.archive{display:grid;gap:20px}.archive-item{display:flex;justify-content:space-between;gap:30px;padding:36px;background:#f7e5b2;border-left:10px solid var(--red);box-shadow:8px 8px 0 rgba(90,20,15,.18)}
+.archive-item.big{padding:45px;background:#efe0b8}.archive-item.dark{background:#261e18;color:#f1dfb3;border-left-color:#d6ae55}
+.archive-item h2{font-size:3rem;margin:8px 0 12px}.archive-item p{max-width:760px;margin:0}.archive-item small{font-weight:900;letter-spacing:.14em;color:var(--red)}.dark small{color:#e3bf75}
+.archive-item>b{align-self:flex-end;color:var(--red);white-space:nowrap}.dark>b{color:#e3bf75}
+.big-tools{max-width:1000px;margin:0 0 80px}.big-tools span{font-size:1rem;padding:14px 20px;background:#f7e5b2}
+.method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.method-grid article{padding:30px;border:3px solid var(--ink);background:#efe1bd}.method-grid b{font-size:1.35rem}.method-grid p{color:var(--muted)}
+.notes-board{display:grid;grid-template-columns:1fr 1fr;gap:22px}.notes-board article{padding:38px;background:#f3e4b9;border-top:9px solid var(--red);min-height:250px}.notes-board article:nth-child(2){transform:rotate(1deg)}.notes-board article:nth-child(3){transform:rotate(-.7deg)}.notes-board small{font-weight:900;color:var(--red);letter-spacing:.1em}.notes-board h2{font-size:2.2rem;margin:18px 0}.notes-board p{color:var(--muted)}
+@media(max-width:850px){.sub-grid,.method-grid,.notes-board{grid-template-columns:1fr}.page-title{font-size:4rem}.archive-item{display:block}.archive-item>b{display:block;margin-top:25px}.timeline div{grid-template-columns:1fr}.timeline span{margin-top:5px}}
