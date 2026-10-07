@@ -129,7 +129,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 /* 首页两侧毛笔对联 */
 .home-page .couplet{
   position:absolute;
-  z-index:4;
+  z-index:20;
   top:50%;
   transform:translateY(-50%);
   writing-mode:vertical-rl;
@@ -173,4 +173,11 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
   .home-page .couplet-left{left:12px}
   .home-page .couplet-right{right:12px}
   .home-page .home-content{padding-left:52px;padding-right:52px}
+}
+
+/* 强制确保首页对联位于海报和正文之上 */
+.home-page .couplet{display:block !important;visibility:visible !important;opacity:1 !important;position:absolute !important;z-index:50 !important;color:#f7e2aa !important;}
+@media(min-width:1101px){
+  .home-page .couplet-left{left:clamp(24px,4vw,70px) !important;}
+  .home-page .couplet-right{right:clamp(24px,4vw,70px) !important;}
 }
