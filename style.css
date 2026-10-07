@@ -123,3 +123,51 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradi
 .home-footer{background:#1c0b08;border-top:3px solid #9d171c;color:#e6d3a0;padding:14px 0;font-size:.75rem;font-weight:800;letter-spacing:.06em}
 .home-footer .container{display:flex;justify-content:space-between;gap:20px}
 @media(max-width:700px){.home-content{padding-top:125px}.home-hero h1{font-size:4.5rem}.home-footer .container{display:grid;gap:4px}.home-header .nav-links{display:none}.poster-credit{left:14px;right:auto;text-align:left}}
+
+
+/* 首页两侧毛笔对联 */
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
+.home-page .couplet{
+  position:absolute;
+  z-index:4;
+  top:50%;
+  transform:translateY(-50%);
+  writing-mode:vertical-rl;
+  text-orientation:upright;
+  font-family:"Ma Shan Zheng","STKaiti","KaiTi","FZKai-Z03","Kaiti SC",cursive;
+  font-size:clamp(2.2rem,4.2vw,4.6rem);
+  font-weight:400;
+  line-height:1.15;
+  letter-spacing:.12em;
+  color:#f5dfaa;
+  text-shadow:3px 4px 0 rgba(70,5,3,.7),0 0 12px rgba(0,0,0,.22);
+  white-space:nowrap;
+  pointer-events:none;
+}
+.home-page .couplet-left{left:clamp(18px,3.5vw,58px)}
+.home-page .couplet-right{right:clamp(18px,3.5vw,58px)}
+.home-page .couplet:after{
+  content:"";
+  display:block;
+  width:.12em;
+  height:2.2em;
+  margin:.65em auto 0;
+  background:#b51f24;
+  opacity:.85;
+}
+@media(max-width:1100px){
+  .home-page .couplet{font-size:clamp(1.9rem,3.8vw,3.3rem)}
+  .home-page .couplet-left{left:14px}
+  .home-page .couplet-right{right:14px}
+}
+@media(max-width:760px){
+  .home-page .couplet{
+    font-size:2.15rem;
+    top:auto;
+    bottom:92px;
+    transform:none;
+  }
+  .home-page .couplet-left{left:12px}
+  .home-page .couplet-right{right:12px}
+  .home-page .home-content{padding-left:52px;padding-right:52px}
+}
