@@ -48,6 +48,7 @@ SITE = {
 NAV = [
     ("index.html", "首页"),
     ("blog/index.html", "博客"),
+    ("maoxuan/index.html", "毛选"),
     ("about.html", "关于"),
 ]
 
