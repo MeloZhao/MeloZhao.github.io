@@ -377,7 +377,7 @@ def page_shell(title, desc, body, prefix, active, extra_head=""):
 %s
 <footer class="footer">
   <div class="wrap footer-inner">
-    <span class="footer-copy">© %d %s · 少吹牛，多跑程序 · 题图来自 Unsplash</span>
+    <span class="footer-copy">© %d %s</span>
     <div class="social-row">
       <a href="%s" target="_blank" rel="noopener" aria-label="GitHub">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.4.4-.6.9-.6 1.5V21"/></svg>
@@ -465,112 +465,25 @@ def post_row(p, prefix=""):
 
 
 def build_index(posts):
-    latest = posts[:3]
-    cards = "\n".join(post_row(p) for p in latest)
-
     body = """
 <main class="page">
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
-      <p class="hero-kicker reveal">Melo Zhao — 个人博客</p>
-      <h1 class="hero-title reveal" data-delay="1">
-        把复杂的事，<br><span class="hl">拆成能跑的程序。</span>
-      </h1>
-      <p class="hero-sub reveal" data-delay="2">
-        白天跑计算、写脚本，晚上把折腾过的坑记录成文。这里记的是工具、流程和自动化，
-        以及那些「本来要手动点二十下、现在一条命令跑完」的事。
-      </p>
-      <div class="hero-actions reveal" data-delay="3">
-        <a class="btn btn-primary" href="blog/index.html">
-          读点东西
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="btn btn-glass" href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-      <p class="hero-meta reveal" data-delay="4">
-        <span class="status-dot"></span>现在在折腾：自动化脚本、工具链，以及这个站点本身
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow"><span class="sec-num">01</span>Writing</p>
-          <h2 class="section-title">最近写了什么</h2>
-          <p class="section-desc">踩过的坑、跑通的流程、读过的论文，都在这儿。</p>
-        </div>
-        <a class="link-arrow" href="blog/index.html">全部文章
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-      <div class="grouped reveal">%s</div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow"><span class="sec-num">02</span>Now</p>
-          <h2 class="section-title">最近在忙什么</h2>
-          <p class="section-desc">不定期更新，比简历诚实一点。</p>
-        </div>
-      </div>
-      <dl class="now-list reveal">
-        <div class="now-row">
-          <dt>在写</dt>
-          <dd>把折腾过的东西记下来。不追求篇数，追求半年后自己还看得懂。</dd>
-        </div>
-        <div class="now-row">
-          <dt>在整</dt>
-          <dd>手头零散的脚本和配置，往「换台机器也能一把跑起来」的方向收。</dd>
-        </div>
-        <div class="now-row">
-          <dt>在学</dt>
-          <dd>排版和界面细节——这个站点的每一处间距，都是拿来练手的。</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow"><span class="sec-num">03</span>Toolchain</p>
-          <h2 class="section-title">常用工具链</h2>
-          <p class="section-desc">能用就用，能串起来就别一个个点。</p>
-        </div>
-      </div>
-      <div class="toolband reveal">
-        <div class="tooltrack">%s%s</div>
-      </div>
-    </div>
-  </section>
+  <div class="wrap home-index">
+    <h1 class="home-name">Melo Zhao</h1>
+    <p class="home-links">
+      <a href="blog/index.html">博客</a>
+      <a href="maoxuan/index.html">毛选</a>
+      <a href="about.html">关于</a>
+    </p>
+  </div>
 </main>
-""" % (
-        cards,
-        "".join('<span>%s</span>' % t for t in TOOLS),
-        "".join('<span>%s</span>' % t for t in TOOLS),
-    )
-
+"""
     return page_shell(
         SITE["name"],
-        SITE["desc"] + "。" + SITE["name_cn"] + "的个人博客与技术笔记。",
+        "Melo Zhao 的个人站点。",
         body,
         "",
         "index.html",
     )
-
-
-TOOLS = [
-    "Python", "Shell", "Git", "Linux", "Docker", "Snakemake", "Nextflow",
-    "PyTorch", "NumPy", "Pandas", "Matplotlib", "Plotly", "SQLite",
-    "FastAPI", "VS Code", "Markdown", "LaTeX", "Nginx",
-]
 
 
 def build_blog_index(posts):
@@ -615,7 +528,7 @@ def build_blog_index(posts):
     <div class="page-head">
       <p class="eyebrow">Archive</p>
       <h1 class="page-title">全部文章</h1>
-      <p class="page-lede">共 %d 篇。记录工具、流程、自动化，以及一些跑通过的东西。</p>
+      <p class="page-lede">共 %d 篇。</p>
     </div>
     <div class="filter-bar">%s</div>
     <div class="archive">%s</div>
@@ -698,76 +611,14 @@ def build_post(posts, idx):
 def build_about():
     body = """
 <main class="page">
-  <div class="wrap">
-    <div class="page-head">
-      <p class="eyebrow">About</p>
-      <h1 class="page-title">一个喜欢<br>把重复劳动交出去的家伙。</h1>
-      <p class="page-lede">写代码、做计算、折腾工具链。相信大部分「忙」都来自没被自动化掉的手工步骤。</p>
-    </div>
-
-    <div class="about-grid">
-      <section class="panel reveal">
-        <h2>我在干什么</h2>
-        <p>日常工作里，一半时间在<strong>写脚本</strong>，另一半在<strong>调试那些脚本</strong>。喜欢把零散的工具串成一条能一条命令跑完的流水线，把中间那些"复制粘贴改参数"的环节全部消灭。</p>
-        <p>对<strong>可复现</strong>这件事有点执念。同一个输入，换一台机器、换一个月，应该跑出同样的结果——做不到就说明流程里有没被记录下来的隐含条件。</p>
-        <p>这个网站是我的公开笔记本。写下来的东西才算真的想明白了。</p>
-      </section>
-
-      <aside class="panel reveal" data-delay="1">
-        <h2>基本原则</h2>
-        <ul class="principle-list">
-          <li>少吹牛，多跑程序。</li>
-          <li>先看证据，再下结论。</li>
-          <li>能自动化，就不手动。</li>
-          <li>能复现，就别只截图。</li>
-          <li>报错了先读日志。</li>
-        </ul>
-      </aside>
-    </div>
-
-    <section class="section">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">Focus</p>
-          <h2 class="section-title">关注的方向</h2>
-        </div>
-      </div>
-      <div class="panel reveal">
-        <div class="timeline">
-          <div class="tl-item"><b>自动化与流水线</b><span>把多步骤流程写成可重跑、可断点续跑的任务图。</span></div>
-          <div class="tl-item"><b>数据处理</b><span>从原始文件到能看的结论，中间不该有人工搬运。</span></div>
-          <div class="tl-item"><b>工具链打磨</b><span>编辑器、终端、版本控制，顺手程度直接决定效率。</span></div>
-          <div class="tl-item"><b>把东西写清楚</b><span>文档和代码一样重要，半年后的自己也是读者。</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2 class="section-title">想聊点什么</h2>
-          <p class="section-desc">合作、提问，或者只是想指出我哪里写错了，都欢迎。</p>
-        </div>
-      </div>
-      <div class="grid-2">
-        <a class="card project-card reveal" href="https://github.com/MeloZhao" target="_blank" rel="noopener">
-          <div class="project-top">
-            <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.4.4-.6.9-.6 1.5V21"/></svg></span>
-            <span class="badge-live">GitHub</span>
-          </div>
-          <h3>@MeloZhao</h3>
-          <p>代码、脚本、还没写完的项目都在这里。</p>
-        </a>
-        <a class="card project-card reveal" data-delay="1" href="blog/index.html">
-          <div class="project-top">
-            <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
-          </div>
-          <h3>读我的笔记</h3>
-          <p>踩过的坑、跑通的流程、顺手的小工具。</p>
-        </a>
-      </div>
-    </section>
+  <div class="wrap about-min">
+    <h1 class="about-name">Melo Zhao</h1>
+    <p class="about-line">写代码，做计算。这里放文章和做过的工具。</p>
+    <p class="about-links">
+      <a href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub</a>
+      <a href="blog/index.html">博客</a>
+      <a href="maoxuan/index.html">毛选</a>
+    </p>
   </div>
 </main>
 """

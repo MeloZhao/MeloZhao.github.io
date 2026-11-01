@@ -1710,3 +1710,50 @@ body::after {
   .nav-links a { padding: 6px 8px; font-size: 12.5px; }
   .theme-toggle { width: 30px; height: 30px; }
 }
+
+/* 极简首页 / 关于 */
+.home-index, .about-min { padding-top: 15vh; }
+
+.home-name, .about-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.home-links, .about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 0;
+  font-size: 15px;
+}
+
+.home-links a, .about-links a {
+  color: var(--muted);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 2px;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.home-links a:hover, .about-links a:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.about-line {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-links { margin-top: 26px; }
+
+/* 短页面：页脚粘底，避免浮在屏幕中间 */
+body { display: flex; flex-direction: column; }
+.page { flex: 1 0 auto; }
+.footer { flex-shrink: 0; }
