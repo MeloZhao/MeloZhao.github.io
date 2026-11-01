@@ -171,6 +171,21 @@
         card.style.display = match ? "" : "none";
         if (match) shown++;
       });
+
+      // 分组列表：没有可见行的分组连同它的年份标签一起收起
+      document.querySelectorAll(".grouped").forEach(function (group) {
+        var rows = group.querySelectorAll(".row");
+        var visible = 0;
+        rows.forEach(function (r) {
+          if (r.style.display !== "none") visible++;
+        });
+        group.style.display = visible ? "" : "none";
+        var label = group.previousElementSibling;
+        if (label && label.classList.contains("group-label")) {
+          label.style.display = visible ? "" : "none";
+        }
+      });
+
       if (empty) empty.style.display = shown ? "none" : "";
     });
   }

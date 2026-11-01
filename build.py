@@ -371,17 +371,19 @@ def page_shell(title, desc, body, prefix, active, extra_head=""):
 </head>
 <body>
 <div class="aurora" aria-hidden="true"></div>
-<div class="gridlines" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 %s
 %s
 <footer class="footer">
   <div class="wrap footer-inner">
     <span class="footer-copy">© %d %s · 少吹牛，多跑程序</span>
-    <div class="footer-links">
-      <a href="%sblog/index.html">全部文章</a>
-      <a href="%sabout.html">关于</a>
-      <a href="%s" target="_blank" rel="noopener">GitHub ↗</a>
+    <div class="social-row">
+      <a href="%s" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.4.4-.6.9-.6 1.5V21"/></svg>
+      </a>
+      <a href="%sfeed.xml" aria-label="RSS 订阅">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.4" fill="currentColor" stroke="none"/></svg>
+      </a>
     </div>
   </div>
 </footer>
@@ -400,9 +402,8 @@ def page_shell(title, desc, body, prefix, active, extra_head=""):
         body,
         SITE["start_year"],
         SITE["name"],
-        prefix,
-        prefix,
         SITE["github"],
+        prefix,
         prefix,
     )
 
@@ -435,39 +436,59 @@ def post_card(p: dict, prefix: str = "") -> str:
     )
 
 
+def post_row(p, prefix=""):
+    tag = p["tags"][0] if p["tags"] else ""
+    return """<a class="row" href="%sblog/%s.html" data-tags="%s">
+  <span class="row-main">
+    <span class="row-title">%s</span>
+    <span class="row-sub">%s</span>
+  </span>
+  <span class="row-side">
+    <span class="row-tag">%s</span>
+    <time class="row-date" datetime="%s">%s</time>
+    <svg class="row-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </span>
+</a>""" % (
+        prefix,
+        p["slug"],
+        esc("|".join(p["tags"])),
+        esc(p["title"]),
+        esc(p["summary"]),
+        esc(tag),
+        p["date_iso"],
+        p["date_str"],
+    )
+
+
 # ---------------------------------------------------------------- pages
 
 
 def build_index(posts):
     latest = posts[:3]
-    cards = "\n".join(post_card(p) for p in latest)
+    cards = "\n".join(post_row(p) for p in latest)
 
     body = """
 <main class="page">
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="status-pill reveal"><span class="status-dot"></span>现在在折腾：自动化脚本、工具链，以及这个站点本身</span>
-        <h1 class="hero-title reveal" data-delay="1">
-          把复杂的事，<br><span class="grad">拆成能跑的程序。</span>
-        </h1>
-        <p class="hero-sub reveal" data-delay="2">
-          我是 Melo Zhao。白天跑计算、写脚本，晚上把折腾过的坑记录成文。
-          这里是我的公开笔记：工具、流程、自动化，以及所有
-          「能自动化就绝不手动」的琐碎经验。
-        </p>
-        <div class="hero-actions reveal" data-delay="3">
-          <a class="btn btn-primary" href="blog/index.html">
-            读点东西
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a class="btn btn-glass" href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
+    <div class="wrap hero-inner">
+      <p class="hero-kicker reveal">Melo Zhao — 个人博客</p>
+      <h1 class="hero-title reveal" data-delay="1">
+        把复杂的事，<br><span class="hl">拆成能跑的程序。</span>
+      </h1>
+      <p class="hero-sub reveal" data-delay="2">
+        白天跑计算、写脚本，晚上把折腾过的坑记录成文。这里记的是工具、流程和自动化，
+        以及那些「本来要手动点二十下、现在一条命令跑完」的事。
+      </p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a class="btn btn-primary" href="blog/index.html">
+          读点东西
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-glass" href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-      <div class="orb-wrap reveal" data-delay="2" aria-hidden="true">
-        <div class="orb-ring"></div>
-        <div class="orb"><span class="orb-initial">M</span></div>
-      </div>
+      <p class="hero-meta reveal" data-delay="4">
+        <span class="status-dot"></span>现在在折腾：自动化脚本、工具链，以及这个站点本身
+      </p>
     </div>
   </section>
 
@@ -475,7 +496,7 @@ def build_index(posts):
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">Writing</p>
+          <p class="eyebrow"><span class="sec-num">01</span>Writing</p>
           <h2 class="section-title">最近写了什么</h2>
           <p class="section-desc">踩过的坑、跑通的流程、读过的论文，都在这儿。</p>
         </div>
@@ -483,7 +504,7 @@ def build_index(posts):
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="post-list">%s</div>
+      <div class="grouped reveal">%s</div>
     </div>
   </section>
 
@@ -491,7 +512,33 @@ def build_index(posts):
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">Toolchain</p>
+          <p class="eyebrow"><span class="sec-num">02</span>Now</p>
+          <h2 class="section-title">最近在忙什么</h2>
+          <p class="section-desc">不定期更新，比简历诚实一点。</p>
+        </div>
+      </div>
+      <dl class="now-list reveal">
+        <div class="now-row">
+          <dt>在写</dt>
+          <dd>把折腾过的东西记下来。不追求篇数，追求半年后自己还看得懂。</dd>
+        </div>
+        <div class="now-row">
+          <dt>在整</dt>
+          <dd>手头零散的脚本和配置，往「换台机器也能一把跑起来」的方向收。</dd>
+        </div>
+        <div class="now-row">
+          <dt>在学</dt>
+          <dd>排版和界面细节——这个站点的每一处间距，都是拿来练手的。</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow"><span class="sec-num">03</span>Toolchain</p>
           <h2 class="section-title">常用工具链</h2>
           <p class="section-desc">能用就用，能串起来就别一个个点。</p>
         </div>
@@ -530,14 +577,35 @@ def build_blog_index(posts):
         for t in p["tags"]:
             if t not in tags:
                 tags.append(t)
-    filters = ['<button class="filter-btn is-on" type="button" data-filter="all">全部 %d</button>' % len(posts)]
+
+    filters = [
+        '<button class="filter-btn is-on" type="button" data-filter="all">全部 %d</button>'
+        % len(posts)
+    ]
     for t in tags:
         filters.append(
             '<button class="filter-btn" type="button" data-filter="%s">%s</button>'
             % (esc(t), esc(t))
         )
 
-    cards = "\n".join(post_card(p) for p in posts)
+    # 按年份分组
+    groups = {}
+    for p in posts:
+        groups.setdefault(p["date"].year, []).append(p)
+
+    blocks = []
+    for year in sorted(groups, reverse=True):
+        items = groups[year]
+        rows = "\n".join(post_row(p, prefix="../") for p in items)
+        blocks.append(
+            '<p class="group-label"><span>%d</span><span>%d 篇</span></p>\n'
+            '<div class="grouped" data-year="%d">\n%s\n</div>'
+            % (year, len(items), year, rows)
+        )
+
+    archive = "\n".join(blocks) if blocks else (
+        '<p class="empty-state">还没有文章。在 posts/ 下新建一个 .md，然后跑一次 build.py。</p>'
+    )
 
     body = """
 <main class="page">
@@ -545,17 +613,17 @@ def build_blog_index(posts):
     <div class="page-head">
       <p class="eyebrow">Archive</p>
       <h1 class="page-title">全部文章</h1>
-      <p class="page-lede">科研随笔、代码脚本、论文阅读，以及一些和科研没什么关系的东西。目前共 %d 篇。</p>
+      <p class="page-lede">共 %d 篇。记录工具、流程、自动化，以及一些跑通过的东西。</p>
     </div>
     <div class="filter-bar">%s</div>
-    <div class="post-list">%s</div>
+    <div class="archive">%s</div>
     <p class="empty-state" style="display:none">这个标签下还没有文章。</p>
   </div>
 </main>
 """ % (
         len(posts),
         "".join(filters),
-        cards,
+        archive,
     )
 
     return page_shell("全部文章", "Melo Zhao 的全部文章归档。", body, "../", "blog/index.html")

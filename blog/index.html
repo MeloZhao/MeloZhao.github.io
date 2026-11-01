@@ -15,7 +15,6 @@
 </head>
 <body>
 <div class="aurora" aria-hidden="true"></div>
-<div class="gridlines" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="nav-shell">
@@ -42,23 +41,23 @@
     <div class="page-head">
       <p class="eyebrow">Archive</p>
       <h1 class="page-title">全部文章</h1>
-      <p class="page-lede">科研随笔、代码脚本、论文阅读，以及一些和科研没什么关系的东西。目前共 1 篇。</p>
+      <p class="page-lede">共 1 篇。记录工具、流程、自动化，以及一些跑通过的东西。</p>
     </div>
     <div class="filter-bar"><button class="filter-btn is-on" type="button" data-filter="all">全部 1</button><button class="filter-btn" type="button" data-filter="建站">建站</button><button class="filter-btn" type="button" data-filter="前端">前端</button></div>
-    <div class="post-list"><a class="card post-card reveal" href="blog/how-this-site-is-built.html" data-tags="建站|前端">
-  <div class="post-card-body">
-    <div class="post-meta">
-      <time datetime="2026-11-01">2026.11.01</time><span class="dot"></span><span>3 min</span><span class="tag">建站</span><span class="tag">前端</span>
-    </div>
-    <h3>这个站点是怎么搭起来的</h3>
-    <p>零框架、零依赖、一行命令构建。顺便讲讲"液态玻璃"到底由哪几层叠出来。</p>
-  </div>
-  <span class="post-card-arrow" aria-hidden="true">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M5 12h14M13 6l6 6-6 6"/>
-    </svg>
+    <div class="archive"><p class="group-label"><span>2026</span><span>1 篇</span></p>
+<div class="grouped" data-year="2026">
+<a class="row" href="../blog/how-this-site-is-built.html" data-tags="建站|前端">
+  <span class="row-main">
+    <span class="row-title">这个站点是怎么搭起来的</span>
+    <span class="row-sub">零框架、零依赖、一行命令构建。顺便讲讲"液态玻璃"到底由哪几层叠出来。</span>
   </span>
-</a></div>
+  <span class="row-side">
+    <span class="row-tag">建站</span>
+    <time class="row-date" datetime="2026-11-01">2026.11.01</time>
+    <svg class="row-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </span>
+</a>
+</div></div>
     <p class="empty-state" style="display:none">这个标签下还没有文章。</p>
   </div>
 </main>
@@ -66,10 +65,13 @@
 <footer class="footer">
   <div class="wrap footer-inner">
     <span class="footer-copy">© 2026 Melo Zhao · 少吹牛，多跑程序</span>
-    <div class="footer-links">
-      <a href="../blog/index.html">全部文章</a>
-      <a href="../about.html">关于</a>
-      <a href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
+    <div class="social-row">
+      <a href="https://github.com/MeloZhao" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.4.4-.6.9-.6 1.5V21"/></svg>
+      </a>
+      <a href="../feed.xml" aria-label="RSS 订阅">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.4" fill="currentColor" stroke="none"/></svg>
+      </a>
     </div>
   </div>
 </footer>
