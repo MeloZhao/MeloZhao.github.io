@@ -64,6 +64,28 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---------- hero parallax ---------- */
+  var heroBg = document.querySelector(".hero-bg");
+  if (heroBg && !reduce) {
+    var hero = heroBg.parentElement;
+    var ticking = false;
+    var applyParallax = function () {
+      var y = window.scrollY;
+      var h = hero.offsetHeight || 1;
+      if (y <= h) {
+        heroBg.style.translate = "0 " + (y * 0.24).toFixed(1) + "px";
+      }
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        window.requestAnimationFrame(applyParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+    applyParallax();
+  }
+
   /* ---------- reveal on scroll ---------- */
   var reveals = document.querySelectorAll(".reveal");
   if (reveals.length) {

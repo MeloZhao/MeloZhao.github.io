@@ -20,6 +20,7 @@
 ├── assets/
 │   ├── css/style.css         # 全部样式（设计系统在文件顶部变量区）
 │   ├── fonts/                # 自托管字体（Instrument Serif / JetBrains Mono）
+│   ├── img/hero-dawn.jpg     # 首屏风景图（Unsplash，166 KB）
 │   └── js/main.js            # 主题切换 / 入场动画 / TOC / 复制代码
 ├── blog/                     # ← 自动生成，勿手改
 ├── index.html                # ← 自动生成
@@ -100,6 +101,22 @@ python3 -m http.server 4000
 - 强调色只出现在极少数位置，正文几乎纯墨色
 - 信息用「行」组织（细线分隔的列表），而不是一堆等大卡片
 - 圆角统一收小，阴影几乎取消，靠细边框分层
+
+### 首屏与动效
+
+首屏是一张云海日出（Unsplash），左侧压一层同色雾让黑字可读，
+右侧留出照片本身。三层动效叠在一起：
+
+| 效果 | 实现 | 时长 |
+| --- | --- | --- |
+| 载入淡入 | `opacity` 关键帧 | 1.4s |
+| 缓慢推近 | `transform: scale()` 关键帧 | 54s 循环 |
+| 滚动视差 | `translate` 属性 + rAF 节流 | 跟随滚动 |
+
+推近用 `transform`、视差用 `translate`，两个属性互不覆盖，才能同时生效。
+`prefers-reduced-motion` 下全部关闭。
+
+换图只需替换 `assets/img/hero-dawn.jpg`，保持 3:2 左右、1800px 宽即可。
 
 ### 玻璃质感的四个要素
 

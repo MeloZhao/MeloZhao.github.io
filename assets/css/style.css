@@ -200,33 +200,103 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: 6px;
 }
 
-/* ---------- 3. 背景：极淡的单色晕染 ---------- */
+/* ---------- 3. 背景：分层结构 ---------- */
+/* 层一：冷暖对置的底色 + 顶部光源 */
 .aurora {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
   pointer-events: none;
   background:
-    radial-gradient(58vmax 46vmax at 12% -12%, rgba(88, 122, 198, 0.22), transparent 62%),
-    radial-gradient(46vmax 40vmax at 96% -4%, rgba(132, 124, 186, 0.15), transparent 64%);
+    radial-gradient(90% 55% at 50% -18%, rgba(255, 255, 255, 0.95), transparent 62%),
+    radial-gradient(62vmax 52vmax at 4% -12%, rgba(84, 118, 196, 0.22), transparent 60%),
+    radial-gradient(46vmax 40vmax at 104% 8%, rgba(126, 120, 186, 0.13), transparent 62%),
+    radial-gradient(54vmax 46vmax at 96% 108%, rgba(198, 148, 108, 0.10), transparent 64%),
+    radial-gradient(38vmax 30vmax at 30% 26%, rgba(255, 255, 255, 0.85), transparent 70%),
+    linear-gradient(178deg, #e9eefb 0%, #e2e8f4 48%, #e8ecf6 100%);
+}
+
+/* 层二：极淡的坐标网格，只属于首屏，随页面滚走 */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 115vh;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--ink) 4.5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--ink) 4.5%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 78% 46% at 50% -4%, #000 0%, rgba(0, 0, 0, 0.3) 40%, transparent 72%);
+  mask-image: radial-gradient(ellipse 78% 46% at 50% -4%, #000 0%, rgba(0, 0, 0, 0.3) 40%, transparent 72%);
+}
+
+/* 层三：暗角，把视线收进画面中间 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 115% 92% at 50% 34%, transparent 52%, rgba(26, 38, 68, 0.075) 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  body::after {
+    background: radial-gradient(ellipse 115% 92% at 50% 34%, transparent 46%, rgba(0, 0, 0, 0.55) 100%);
+  }
+}
+[data-theme="dark"] body::after {
+  background: radial-gradient(ellipse 115% 92% at 50% 34%, transparent 46%, rgba(0, 0, 0, 0.55) 100%);
+}
+[data-theme="light"] body::after {
+  background: radial-gradient(ellipse 115% 92% at 50% 34%, transparent 52%, rgba(26, 38, 68, 0.075) 100%);
 }
 
 @media (prefers-color-scheme: dark) {
   .aurora {
     background:
-      radial-gradient(58vmax 46vmax at 12% -12%, rgba(58, 88, 168, 0.28), transparent 62%),
-      radial-gradient(46vmax 40vmax at 96% -4%, rgba(86, 70, 140, 0.2), transparent 64%);
+      radial-gradient(90% 55% at 50% -18%, rgba(72, 96, 160, 0.22), transparent 62%),
+      radial-gradient(62vmax 52vmax at 4% -12%, rgba(38, 62, 128, 0.42), transparent 60%),
+      radial-gradient(46vmax 40vmax at 104% 8%, rgba(72, 52, 118, 0.32), transparent 62%),
+      radial-gradient(54vmax 46vmax at 96% 108%, rgba(120, 74, 46, 0.16), transparent 64%),
+      linear-gradient(178deg, #080b13 0%, #05070c 48%, #070a11 100%);
+  }
+  body::before {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   }
 }
 [data-theme="dark"] .aurora {
   background:
-    radial-gradient(58vmax 46vmax at 12% -12%, rgba(58, 88, 168, 0.28), transparent 62%),
-    radial-gradient(46vmax 40vmax at 96% -4%, rgba(86, 70, 140, 0.2), transparent 64%);
+    radial-gradient(90% 55% at 50% -18%, rgba(72, 96, 160, 0.22), transparent 62%),
+    radial-gradient(62vmax 52vmax at 4% -12%, rgba(38, 62, 128, 0.42), transparent 60%),
+    radial-gradient(46vmax 40vmax at 104% 8%, rgba(72, 52, 118, 0.32), transparent 62%),
+    radial-gradient(54vmax 46vmax at 96% 108%, rgba(120, 74, 46, 0.16), transparent 64%),
+    linear-gradient(178deg, #080b13 0%, #05070c 48%, #070a11 100%);
+}
+[data-theme="dark"] body::before {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
 }
 [data-theme="light"] .aurora {
   background:
-    radial-gradient(58vmax 46vmax at 12% -12%, rgba(88, 122, 198, 0.22), transparent 62%),
-    radial-gradient(46vmax 40vmax at 96% -4%, rgba(132, 124, 186, 0.15), transparent 64%);
+    radial-gradient(90% 55% at 50% -18%, rgba(255, 255, 255, 0.95), transparent 62%),
+    radial-gradient(62vmax 52vmax at 4% -12%, rgba(84, 118, 196, 0.22), transparent 60%),
+    radial-gradient(46vmax 40vmax at 104% 8%, rgba(126, 120, 186, 0.13), transparent 62%),
+    radial-gradient(54vmax 46vmax at 96% 108%, rgba(198, 148, 108, 0.10), transparent 64%),
+    radial-gradient(38vmax 30vmax at 30% 26%, rgba(255, 255, 255, 0.85), transparent 70%),
+    linear-gradient(178deg, #e9eefb 0%, #e2e8f4 48%, #e8ecf6 100%);
+}
+[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1px);
 }
 
 /* ---------- 4. Glass primitives ---------- */
@@ -276,7 +346,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .page {
-  padding-top: 112px;
+  --page-top: 112px;
+  padding-top: var(--page-top);
   padding-bottom: 90px;
 }
 
@@ -412,7 +483,91 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ---------- 7. Hero ---------- */
 .hero {
-  padding: clamp(52px, 7vw, 92px) 0 clamp(24px, 3vw, 40px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: calc(-1 * var(--page-top, 112px));
+  min-height: min(84vh, 780px);
+  display: flex;
+  align-items: center;
+  padding: calc(var(--page-top, 112px) + clamp(44px, 6vw, 76px)) 0 clamp(28px, 3.4vw, 46px);
+}
+
+/* 首屏风景图层 */
+.hero-bg {
+  position: absolute;
+  inset: -8% -3% -4%;
+  z-index: -2;
+  background-image: url("../img/hero-dawn.jpg");
+  background-size: cover;
+  background-position: center 46%;
+  filter: saturate(0.78) brightness(1.02) contrast(1.0);
+  animation: heroIn 1.4s var(--ease-out) both, kenburns 54s ease-in-out 1.4s infinite alternate;
+  will-change: transform, translate;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 54%, rgba(0, 0, 0, 0.45) 78%, transparent 97%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 54%, rgba(0, 0, 0, 0.45) 78%, transparent 97%);
+}
+
+@keyframes heroIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes kenburns {
+  from { transform: scale(1.03) translate3d(0, 0, 0); }
+  to   { transform: scale(1.12) translate3d(-1.6%, -1.2%, 0); }
+}
+
+/* 压一层雾，保证黑字可读 */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(92deg,
+      rgba(229, 235, 246, 0.98) 0%,
+      rgba(229, 235, 246, 0.94) 42%,
+      rgba(229, 235, 246, 0.7) 58%,
+      rgba(229, 235, 246, 0.28) 76%,
+      rgba(229, 235, 246, 0.04) 94%),
+    linear-gradient(180deg,
+      rgba(229, 235, 246, 0.82) 0%,
+      rgba(229, 235, 246, 0.08) 20%,
+      rgba(229, 235, 246, 0.3) 72%,
+      rgba(229, 235, 246, 0) 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-bg { filter: saturate(0.5) brightness(0.62) contrast(1.02); }
+  .hero::before {
+    background:
+      linear-gradient(94deg,
+        rgba(6, 9, 16, 0.96) 0%,
+        rgba(6, 9, 16, 0.88) 28%,
+        rgba(6, 9, 16, 0.5) 55%,
+        rgba(6, 9, 16, 0.18) 82%),
+      linear-gradient(180deg,
+        rgba(6, 9, 16, 0.8) 0%,
+        rgba(6, 9, 16, 0.15) 22%,
+        rgba(5, 7, 13, 0.6) 74%,
+        var(--page) 100%);
+  }
+}
+[data-theme="dark"] .hero-bg { filter: saturate(0.5) brightness(0.62) contrast(1.02); }
+[data-theme="dark"] .hero::before {
+  background:
+    linear-gradient(94deg,
+      rgba(6, 9, 16, 0.96) 0%,
+      rgba(6, 9, 16, 0.88) 28%,
+      rgba(6, 9, 16, 0.5) 55%,
+      rgba(6, 9, 16, 0.18) 82%),
+    linear-gradient(180deg,
+      rgba(6, 9, 16, 0.8) 0%,
+      rgba(6, 9, 16, 0.15) 22%,
+      rgba(5, 7, 13, 0.6) 74%,
+      var(--page) 100%);
 }
 
 .hero-inner { max-width: 100%; }
@@ -1299,7 +1454,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .theme-toggle { width: 32px; height: 32px; margin-left: 2px; }
   .nav-burger { display: none; }
   .nav-shell { top: 12px; }
-  .page { padding-top: 92px; }
+  .page { --page-top: 84px; padding-top: var(--page-top); }
   .post-card { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
   .post-card-arrow { display: none; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
@@ -1345,7 +1500,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* 手机端隐藏装饰球，避免与悬浮导航打架 */
 @media (max-width: 720px) {
   .article-wrap { padding-top: 104px; }
-  .hero { min-height: auto; padding-top: 40px; padding-bottom: 36px; }
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--page-top, 84px) + 40px);
+    padding-bottom: 36px;
+  }
 }
 
 /* 只有一篇相邻文章时占满整行 */

@@ -376,7 +376,7 @@ def page_shell(title, desc, body, prefix, active, extra_head=""):
 %s
 <footer class="footer">
   <div class="wrap footer-inner">
-    <span class="footer-copy">© %d %s · 少吹牛，多跑程序</span>
+    <span class="footer-copy">© %d %s · 少吹牛，多跑程序 · 题图来自 Unsplash</span>
     <div class="social-row">
       <a href="%s" target="_blank" rel="noopener" aria-label="GitHub">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.4.4-.6.9-.6 1.5V21"/></svg>
@@ -470,6 +470,7 @@ def build_index(posts):
     body = """
 <main class="page">
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <p class="hero-kicker reveal">Melo Zhao — 个人博客</p>
       <h1 class="hero-title reveal" data-delay="1">
