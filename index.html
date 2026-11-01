@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Melo Zhao</title>
-<meta name="description" content="计算蛋白工程 · 酶设计 · 分子动力学 · AI 蛋白设计。赵某人的个人博客与技术笔记。">
+<meta name="description" content="写代码 · 做计算 · 把重复劳动自动化。赵某人的个人博客与技术笔记。">
 <meta name="theme-color" content="#e9eef7">
 <meta property="og:title" content="Melo Zhao">
-<meta property="og:description" content="计算蛋白工程 · 酶设计 · 分子动力学 · AI 蛋白设计。赵某人的个人博客与技术笔记。">
+<meta property="og:description" content="写代码 · 做计算 · 把重复劳动自动化。赵某人的个人博客与技术笔记。">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230a6cff'/%3E%3Cstop offset='.55' stop-color='%236d4bff'/%3E%3Cstop offset='1' stop-color='%2300c2b2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-family='-apple-system,Helvetica,sans-serif' font-size='36' font-weight='600' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -41,14 +41,14 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="status-pill reveal"><span class="status-dot"></span>现在在折腾分子模拟、结构预测和自动化脚本</span>
+        <span class="status-pill reveal"><span class="status-dot"></span>现在在折腾：自动化脚本、工具链，以及这个站点本身</span>
         <h1 class="hero-title reveal" data-delay="1">
-          在原子尺度上，<br><span class="grad">造一点新东西。</span>
+          把复杂的事，<br><span class="grad">拆成能跑的程序。</span>
         </h1>
         <p class="hero-sub reveal" data-delay="2">
-          我是 Melo Zhao，一名计算蛋白工程师。白天跑分子动力学、写设计脚本，
-          晚上把这些折腾记录成文。这里是我的公开笔记：酶设计、环化、
-          结构预测，以及所有「能自动化就绝不手动」的琐碎经验。
+          我是 Melo Zhao。白天跑计算、写脚本，晚上把折腾过的坑记录成文。
+          这里是我的公开笔记：工具、流程、自动化，以及所有
+          「能自动化就绝不手动」的琐碎经验。
         </p>
         <div class="hero-actions reveal" data-delay="3">
           <a class="btn btn-primary" href="blog/index.html">
@@ -77,41 +77,13 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="post-list"><a class="card post-card reveal" href="blog/gromacs-200ns-pitfalls.html" data-tags="科研随笔|GROMACS">
+      <div class="post-list"><a class="card post-card reveal" href="blog/how-this-site-is-built.html" data-tags="建站|前端">
   <div class="post-card-body">
     <div class="post-meta">
-      <time datetime="2026-10-05">2026.10.05</time><span class="dot"></span><span>3 min</span><span class="tag">科研随笔</span><span class="tag">GROMACS</span>
+      <time datetime="2026-11-01">2026.11.01</time><span class="dot"></span><span>3 min</span><span class="tag">建站</span><span class="tag">前端</span>
     </div>
-    <h3>跑 200 ns 之前，我在 GROMACS 上踩过的七个坑</h3>
-    <p>环境、拓扑、力场、压力耦合……这些坑不会写进论文的方法部分，但每一个都能让你白跑三天。</p>
-  </div>
-  <span class="post-card-arrow" aria-hidden="true">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M5 12h14M13 6l6 6-6 6"/>
-    </svg>
-  </span>
-</a>
-<a class="card post-card reveal" href="blog/cycldesign-pipeline.html" data-tags="项目|蛋白设计">
-  <div class="post-card-body">
-    <div class="post-meta">
-      <time datetime="2026-09-22">2026.09.22</time><span class="dot"></span><span>3 min</span><span class="tag">项目</span><span class="tag">蛋白设计</span>
-    </div>
-    <h3>CyclDesign：把蛋白质环化设计做成一条流水线</h3>
-    <p>从 PDB 到可下单的环化候选，中间到底要经过多少步？我把它们拆成了七个可以独立重跑的环节。</p>
-  </div>
-  <span class="post-card-arrow" aria-hidden="true">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M5 12h14M13 6l6 6-6 6"/>
-    </svg>
-  </span>
-</a>
-<a class="card post-card reveal" href="blog/proteinmpnn-cyclization-notes.html" data-tags="方法|蛋白设计|论文阅读">
-  <div class="post-card-body">
-    <div class="post-meta">
-      <time datetime="2026-08-30">2026.08.30</time><span class="dot"></span><span>3 min</span><span class="tag">方法</span><span class="tag">蛋白设计</span>
-    </div>
-    <h3>用 ProteinMPNN 做环化设计时，三个容易被忽略的细节</h3>
-    <p>tie 的到底是哪几个残基、链 ID 怎么传、采样温度选多少——这三件事决定了你拿到的是设计还是噪声。</p>
+    <h3>这个站点是怎么搭起来的</h3>
+    <p>零框架、零依赖、一行命令构建。顺便讲讲"液态玻璃"到底由哪几层叠出来。</p>
   </div>
   <span class="post-card-arrow" aria-hidden="true">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -132,7 +104,7 @@
         </div>
       </div>
       <div class="toolband reveal">
-        <div class="tooltrack"><span>GROMACS</span><span>AlphaFold</span><span>RoseTTAFold3</span><span>ProteinMPNN</span><span>LigandMPNN</span><span>Rosetta</span><span>FoldX</span><span>AutoDock</span><span>DiffDock</span><span>PyMOL</span><span>MDAnalysis</span><span>NetworkX</span><span>Gaussian</span><span>Multiwfn</span><span>Python</span><span>Snakemake</span><span>Nextflow</span><span>PyTorch</span><span>NumPy</span><span>Git</span><span>GROMACS</span><span>AlphaFold</span><span>RoseTTAFold3</span><span>ProteinMPNN</span><span>LigandMPNN</span><span>Rosetta</span><span>FoldX</span><span>AutoDock</span><span>DiffDock</span><span>PyMOL</span><span>MDAnalysis</span><span>NetworkX</span><span>Gaussian</span><span>Multiwfn</span><span>Python</span><span>Snakemake</span><span>Nextflow</span><span>PyTorch</span><span>NumPy</span><span>Git</span></div>
+        <div class="tooltrack"><span>Python</span><span>Shell</span><span>Git</span><span>Linux</span><span>Docker</span><span>Snakemake</span><span>Nextflow</span><span>PyTorch</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Plotly</span><span>SQLite</span><span>FastAPI</span><span>VS Code</span><span>Markdown</span><span>LaTeX</span><span>Nginx</span><span>Python</span><span>Shell</span><span>Git</span><span>Linux</span><span>Docker</span><span>Snakemake</span><span>Nextflow</span><span>PyTorch</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Plotly</span><span>SQLite</span><span>FastAPI</span><span>VS Code</span><span>Markdown</span><span>LaTeX</span><span>Nginx</span></div>
       </div>
     </div>
   </section>

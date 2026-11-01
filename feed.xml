@@ -3,35 +3,14 @@
 <channel>
   <title>Melo Zhao</title>
   <link>https://melozhao.github.io</link>
-  <description>计算蛋白工程 · 酶设计 · 分子动力学 · AI 蛋白设计</description>
+  <description>写代码 · 做计算 · 把重复劳动自动化</description>
   <language>zh-CN</language>
   <item>
-    <title>跑 200 ns 之前，我在 GROMACS 上踩过的七个坑</title>
-    <link>https://melozhao.github.io/blog/gromacs-200ns-pitfalls.html</link>
-    <guid>https://melozhao.github.io/blog/gromacs-200ns-pitfalls.html</guid>
-    <pubDate>Mon, 05 Oct 2026 00:00:00 +0800</pubDate>
-    <description>环境、拓扑、力场、压力耦合……这些坑不会写进论文的方法部分，但每一个都能让你白跑三天。</description>
-  </item>
-  <item>
-    <title>CyclDesign：把蛋白质环化设计做成一条流水线</title>
-    <link>https://melozhao.github.io/blog/cycldesign-pipeline.html</link>
-    <guid>https://melozhao.github.io/blog/cycldesign-pipeline.html</guid>
-    <pubDate>Tue, 22 Sep 2026 00:00:00 +0800</pubDate>
-    <description>从 PDB 到可下单的环化候选，中间到底要经过多少步？我把它们拆成了七个可以独立重跑的环节。</description>
-  </item>
-  <item>
-    <title>用 ProteinMPNN 做环化设计时，三个容易被忽略的细节</title>
-    <link>https://melozhao.github.io/blog/proteinmpnn-cyclization-notes.html</link>
-    <guid>https://melozhao.github.io/blog/proteinmpnn-cyclization-notes.html</guid>
-    <pubDate>Sun, 30 Aug 2026 00:00:00 +0800</pubDate>
-    <description>tie 的到底是哪几个残基、链 ID 怎么传、采样温度选多少——这三件事决定了你拿到的是设计还是噪声。</description>
-  </item>
-  <item>
-    <title>结构预测基本解决之后，还剩下什么问题</title>
-    <link>https://melozhao.github.io/blog/structure-prediction-after.html</link>
-    <guid>https://melozhao.github.io/blog/structure-prediction-after.html</guid>
-    <pubDate>Sat, 18 Jul 2026 00:00:00 +0800</pubDate>
-    <description>单链静态结构已经不是瓶颈了。真正难的是构象变化、复合物界面、以及「这个结构能不能用」。</description>
+    <title>这个站点是怎么搭起来的</title>
+    <link>https://melozhao.github.io/blog/how-this-site-is-built.html</link>
+    <guid>https://melozhao.github.io/blog/how-this-site-is-built.html</guid>
+    <pubDate>Sun, 01 Nov 2026 00:00:00 +0800</pubDate>
+    <description>零框架、零依赖、一行命令构建。顺便讲讲"液态玻璃"到底由哪几层叠出来。</description>
   </item>
 </channel>
 </rss>

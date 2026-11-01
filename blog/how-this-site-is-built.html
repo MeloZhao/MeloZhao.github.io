@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>这个站点是怎么搭起来的 — Melo Zhao</title>
+<meta name="description" content="零框架、零依赖、一行命令构建。顺便讲讲"液态玻璃"到底由哪几层叠出来。">
+<meta name="theme-color" content="#e9eef7">
+<meta property="og:title" content="这个站点是怎么搭起来的 — Melo Zhao">
+<meta property="og:description" content="零框架、零依赖、一行命令构建。顺便讲讲"液态玻璃"到底由哪几层叠出来。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230a6cff'/%3E%3Cstop offset='.55' stop-color='%236d4bff'/%3E%3Cstop offset='1' stop-color='%2300c2b2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-family='-apple-system,Helvetica,sans-serif' font-size='36' font-weight='600' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+</head>
+<body>
+<div class="aurora" aria-hidden="true"></div>
+<div class="gridlines" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav-shell">
+  <nav class="nav" aria-label="主导航">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">M</span>
+      <span>Melo Zhao</span>
+    </a>
+    <div class="nav-links"><a href="../index.html">首页</a><a href="../blog/index.html" class="is-active">博客</a><a href="../about.html">关于</a></div>
+    <button class="theme-toggle" type="button" aria-label="切换主题">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<div class="progress" aria-hidden="true"></div>
+<main class="wrap">
+  <article class="article-wrap">
+    <div>
+      <header class="article-head">
+        <div class="article-meta">
+          <time datetime="2026-11-01">2026.11.01</time><span class="dot"></span><span>3 分钟阅读</span><span class="tag">建站</span><span class="tag">前端</span>
+        </div>
+        <h1 class="article-title">这个站点是怎么搭起来的</h1>
+        <div class="article-hero-rule"></div>
+      </header>
+      <div class="prose"><p>换掉用了很久的旧站，重新做了一版。这篇记录一下技术选型和几个实现细节，以后想改的时候不用重新想一遍。</p>
+<h2 id="h-为什么不用框架">为什么不用框架</h2>
+<p>试过几个静态站点生成器，最后都放弃了。理由很朴素：</p>
+<ul><li>装依赖要花时间，半年后回来还得回忆怎么装；</li><li>主题改到第三层就开始和框架打架；</li><li>想调一个 CSS 变量，得先搞清楚它在哪一层被覆盖。</li></ul>
+<p>所以这次只用了三样东西：<strong>Python 标准库、一个 CSS 文件、一个 JS 文件</strong>。</p>
+<p><code>build.py</code> 做全部的事：读 Markdown、解析 front matter、生成 HTML、写 RSS 和 sitemap。没有 <code>pip install</code>，没有 <code>node_modules</code>。</p>
+<div class="codeblock"><div class="codeblock-top"><span>bash</span><button class="copy-btn" type="button">COPY</button></div><pre><code>python3 build.py          # 构建
+python3 build.py --serve  # 构建 + 本地预览</code></pre></div>
+<h2 id="h-目录结构">目录结构</h2>
+<div class="codeblock"><div class="codeblock-top"><span>text</span><button class="copy-btn" type="button">COPY</button></div><pre><code>posts/*.md        ← 唯一需要手动编辑的地方
+build.py          ← 生成器
+assets/css/       ← 全部样式
+assets/js/        ← 交互
+blog/             ← 生成产物</code></pre></div>
+<p>文章的增删只影响 <code>posts/</code>，其他目录都是产物。这个边界划清楚之后，改版就不怕弄丢内容。</p>
+<h2 id="h-液态玻璃-其实是四层">「液态玻璃」其实是四层</h2>
+<p>很多人以为玻璃质感就是加一个 <code>backdrop-filter: blur()</code>。只做这一层，结果是一张灰扑扑的卡片。真正撑起质感的是四层叠加：</p>
+<h3 id="h-第一层-有东西可模糊">第一层：有东西可模糊</h3>
+<p><code>backdrop-filter</code> 模糊的是它背后的像素。如果背后是纯色，模糊前后没有任何区别。</p>
+<p>所以背景必须是<strong>多色、低饱和、大尺度</strong>的渐变。我用几个超大的 radial-gradient 拼在一起：</p>
+<div class="codeblock"><div class="codeblock-top"><span>css</span><button class="copy-btn" type="button">COPY</button></div><pre><code>.aurora {
+  background:
+    radial-gradient(34vmax 32vmax at 10% 4%, rgba(88,148,255,.62), transparent 62%),
+    radial-gradient(30vmax 30vmax at 92% 0%, rgba(150,122,255,.55), transparent 60%),
+    radial-gradient(38vmax 34vmax at 88% 84%, rgba(38,214,196,.45), transparent 62%);
+  filter: blur(74px) saturate(150%);
+}</code></pre></div>
+<h3 id="h-第二层-模糊与饱和">第二层：模糊与饱和</h3>
+<div class="codeblock"><div class="codeblock-top"><span>css</span><button class="copy-btn" type="button">COPY</button></div><pre><code>backdrop-filter: blur(26px) saturate(200%);</code></pre></div>
+<p><code>blur</code> 让背后失焦，<code>saturate</code> 把被冲淡的颜色拉回来。只加 blur 会显得发灰，两个一起用才有"透过去看"的感觉。</p>
+<h3 id="h-第三层-边缘反光">第三层：边缘反光</h3>
+<p>玻璃的边缘会亮。用 1px 内阴影模拟：</p>
+<div class="codeblock"><div class="codeblock-top"><span>css</span><button class="copy-btn" type="button">COPY</button></div><pre><code>box-shadow:
+  inset 0 1px 0 0 rgba(255,255,255,.95),   /* 顶部高光 */
+  inset 0 -1px 0 0 rgba(255,255,255,.12);  /* 底部微弱反射 */</code></pre></div>
+<p>再加上一圈用 <code>mask-composite</code> 挖出来的渐变描边，四个角的亮度不一致，看起来才不像塑料。</p>
+<h3 id="h-第四层-内层斜向高光">第四层：内层斜向高光</h3>
+<p>这是最容易被忽略的一层。真实玻璃表面有方向性的反射，体现在 CSS 里就是一层从左上到右下的斜向渐变：</p>
+<div class="codeblock"><div class="codeblock-top"><span>css</span><button class="copy-btn" type="button">COPY</button></div><pre><code>background-image: linear-gradient(163deg,
+  rgba(255,255,255,.6) 0%,
+  rgba(255,255,255,.12) 38%,
+  rgba(255,255,255,0) 64%);</code></pre></div>
+<p>加上这一层，卡片立刻从"白色方块"变成"有厚度的玻璃"。</p>
+<blockquote><p>四层缺任何一层都会退化。少第一层是白卡片，少第三层是毛玻璃贴纸，少第四层是塑料片。</p></blockquote>
+<h2 id="h-主题切换">主题切换</h2>
+<p>跟随系统，也可以手动覆盖。手动选择存在 <code>localStorage</code>，下次进来保持。</p>
+<div class="codeblock"><div class="codeblock-top"><span>css</span><button class="copy-btn" type="button">COPY</button></div><pre><code>:root { /* 浅色变量 */ }
+@media (prefers-color-scheme: dark) { :root { /* 深色变量 */ } }
+[data-theme="light"] { /* 手动覆盖 */ }
+[data-theme="dark"]  { /* 手动覆盖 */ }</code></pre></div>
+<p>注意 <code>data-theme</code> 那两条必须写在媒体查询<strong>之后</strong>，否则优先级打不过。</p>
+<h2 id="h-几个小细节">几个小细节</h2>
+<p><strong>入场动画用 IntersectionObserver，不用滚动监听。</strong> 滚动监听每一帧都在算位置，容易掉帧。观察器只在进入视口时触发一次，然后 <code>unobserve</code>。</p>
+<p><strong><code>prefers-reduced-motion</code> 必须处理。</strong> 不是可选项——对前庭功能敏感的人来说，动效是真的会让人不适。</p>
+<div class="codeblock"><div class="codeblock-top"><span>css</span><button class="copy-btn" type="button">COPY</button></div><pre><code>@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}</code></pre></div>
+<p><strong>移动端不要用汉堡菜单。</strong> 只有三个导航项的时候，平铺比藏起来更好找。空间不够就缩字号、隐藏站点名，别把导航塞进抽屉里。</p>
+<h2 id="h-性能">性能</h2>
+<p>整个站没有外部请求：没有字体 CDN、没有图标库、没有分析脚本。字体用系统字体栈：</p>
+<div class="codeblock"><div class="codeblock-top"><span>css</span><button class="copy-btn" type="button">COPY</button></div><pre><code>font-family: -apple-system, "SF Pro Text", "Inter",
+  "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;</code></pre></div>
+<p>在 macOS 上是 SF Pro + 苹方，在 Windows 上是 Segoe UI + 微软雅黑。都不是"设计字体"，但都足够干净，而且<strong>零加载时间</strong>。</p>
+<h2 id="h-最后">最后</h2>
+<p>这套东西的价值不在于技术含量，而在于<strong>半年后我还看得懂</strong>。</p>
+<p>一个 CSS 文件、一个生成器、一个 Markdown 目录。想改配色就改文件顶部的变量，想写文章就新建一个 <code>.md</code>。</p></div>
+      
+    </div>
+    <aside class="toc"><p class="toc-title">On this page</p><a class="lvl-2" href="#h-为什么不用框架">为什么不用框架</a><a class="lvl-2" href="#h-目录结构">目录结构</a><a class="lvl-2" href="#h-液态玻璃-其实是四层">「液态玻璃」其实是四层</a><a class="lvl-3" href="#h-第一层-有东西可模糊">第一层：有东西可模糊</a><a class="lvl-3" href="#h-第二层-模糊与饱和">第二层：模糊与饱和</a><a class="lvl-3" href="#h-第三层-边缘反光">第三层：边缘反光</a><a class="lvl-3" href="#h-第四层-内层斜向高光">第四层：内层斜向高光</a><a class="lvl-2" href="#h-主题切换">主题切换</a><a class="lvl-2" href="#h-几个小细节">几个小细节</a><a class="lvl-2" href="#h-性能">性能</a><a class="lvl-2" href="#h-最后">最后</a></aside>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span class="footer-copy">© 2026 Melo Zhao · 少吹牛，多跑程序</span>
+    <div class="footer-links">
+      <a href="../blog/index.html">全部文章</a>
+      <a href="../about.html">关于</a>
+      <a href="https://github.com/MeloZhao" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

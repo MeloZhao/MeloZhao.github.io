@@ -37,9 +37,9 @@ BLOG_DIR = ROOT / "blog"
 SITE = {
     "name": "Melo Zhao",
     "name_cn": "赵某人",
-    "role": "计算蛋白工程师",
+    "role": "写代码的人",
     "url": "https://melozhao.github.io",
-    "desc": "计算蛋白工程 · 酶设计 · 分子动力学 · AI 蛋白设计",
+    "desc": "写代码 · 做计算 · 把重复劳动自动化",
     "github": "https://github.com/MeloZhao",
     "email": "melozhao@example.com",
     "start_year": 2026,
@@ -447,14 +447,14 @@ def build_index(posts):
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="status-pill reveal"><span class="status-dot"></span>现在在折腾分子模拟、结构预测和自动化脚本</span>
+        <span class="status-pill reveal"><span class="status-dot"></span>现在在折腾：自动化脚本、工具链，以及这个站点本身</span>
         <h1 class="hero-title reveal" data-delay="1">
-          在原子尺度上，<br><span class="grad">造一点新东西。</span>
+          把复杂的事，<br><span class="grad">拆成能跑的程序。</span>
         </h1>
         <p class="hero-sub reveal" data-delay="2">
-          我是 Melo Zhao，一名计算蛋白工程师。白天跑分子动力学、写设计脚本，
-          晚上把这些折腾记录成文。这里是我的公开笔记：酶设计、环化、
-          结构预测，以及所有「能自动化就绝不手动」的琐碎经验。
+          我是 Melo Zhao。白天跑计算、写脚本，晚上把折腾过的坑记录成文。
+          这里是我的公开笔记：工具、流程、自动化，以及所有
+          「能自动化就绝不手动」的琐碎经验。
         </p>
         <div class="hero-actions reveal" data-delay="3">
           <a class="btn btn-primary" href="blog/index.html">
@@ -518,10 +518,9 @@ def build_index(posts):
 
 
 TOOLS = [
-    "GROMACS", "AlphaFold", "RoseTTAFold3", "ProteinMPNN", "LigandMPNN",
-    "Rosetta", "FoldX", "AutoDock", "DiffDock", "PyMOL", "MDAnalysis",
-    "NetworkX", "Gaussian", "Multiwfn", "Python", "Snakemake", "Nextflow",
-    "PyTorch", "NumPy", "Git",
+    "Python", "Shell", "Git", "Linux", "Docker", "Snakemake", "Nextflow",
+    "PyTorch", "NumPy", "Pandas", "Matplotlib", "Plotly", "SQLite",
+    "FastAPI", "VS Code", "Markdown", "LaTeX", "Nginx",
 ]
 
 
@@ -632,15 +631,15 @@ def build_about():
   <div class="wrap">
     <div class="page-head">
       <p class="eyebrow">About</p>
-      <h1 class="page-title">一个不太正经的<br>计算蛋白工程师。</h1>
-      <p class="page-lede">主要折腾计算蛋白工程、酶设计、蛋白质环化、分子动力学，以及 AI 驱动的蛋白设计。</p>
+      <h1 class="page-title">一个喜欢<br>把重复劳动交出去的家伙。</h1>
+      <p class="page-lede">写代码、做计算、折腾工具链。相信大部分「忙」都来自没被自动化掉的手工步骤。</p>
     </div>
 
     <div class="about-grid">
       <section class="panel reveal">
         <h2>我在干什么</h2>
-        <p>我的日常是把<strong>结构</strong>、<strong>序列</strong>和<strong>实验</strong>这三件事缝起来：从 PDB 里挑骨架，用 ProteinMPNN 生成序列，AlphaFold / RF3 预测回来，再拿几何和能量指标筛一遍。</p>
-        <p>平时喜欢把各种程序串起来，把重复工作自动化，再把计算结果整理成<strong>真正能拿去做实验的候选</strong>——不是一堆好看的图，而是能下单的序列。</p>
+        <p>日常工作里，一半时间在<strong>写脚本</strong>，另一半在<strong>调试那些脚本</strong>。喜欢把零散的工具串成一条能一条命令跑完的流水线，把中间那些"复制粘贴改参数"的环节全部消灭。</p>
+        <p>对<strong>可复现</strong>这件事有点执念。同一个输入，换一台机器、换一个月，应该跑出同样的结果——做不到就说明流程里有没被记录下来的隐含条件。</p>
         <p>这个网站是我的公开笔记本。写下来的东西才算真的想明白了。</p>
       </section>
 
@@ -660,15 +659,15 @@ def build_about():
       <div class="section-head reveal">
         <div>
           <p class="eyebrow">Focus</p>
-          <h2 class="section-title">科研路线</h2>
+          <h2 class="section-title">关注的方向</h2>
         </div>
       </div>
       <div class="panel reveal">
         <div class="timeline">
-          <div class="tl-item"><b>Protein Engineering</b><span>结构 → 序列 → 候选，一条能跑通的链路。</span></div>
-          <div class="tl-item"><b>Protein Cyclization</b><span>环化设计 → 结构筛选 → 稳定性验证。</span></div>
-          <div class="tl-item"><b>Molecular Dynamics</b><span>轨迹 → 动力学 → 机制解释，200 ns 起步。</span></div>
-          <div class="tl-item"><b>Design Systems</b><span>工具 → Workflow → 可部署平台。</span></div>
+          <div class="tl-item"><b>自动化与流水线</b><span>把多步骤流程写成可重跑、可断点续跑的任务图。</span></div>
+          <div class="tl-item"><b>数据处理</b><span>从原始文件到能看的结论，中间不该有人工搬运。</span></div>
+          <div class="tl-item"><b>工具链打磨</b><span>编辑器、终端、版本控制，顺手程度直接决定效率。</span></div>
+          <div class="tl-item"><b>把东西写清楚</b><span>文档和代码一样重要，半年后的自己也是读者。</span></div>
         </div>
       </div>
     </section>
@@ -678,7 +677,7 @@ def build_about():
         <div>
           <p class="eyebrow">Contact</p>
           <h2 class="section-title">想聊点什么</h2>
-          <p class="section-desc">合作、提问、或者只是想指出我哪里写错了，都欢迎。</p>
+          <p class="section-desc">合作、提问，或者只是想指出我哪里写错了，都欢迎。</p>
         </div>
       </div>
       <div class="grid-2">
@@ -695,14 +694,14 @@ def build_about():
             <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
           </div>
           <h3>读我的笔记</h3>
-          <p>踩过的坑、跑通的流程、读过的论文。</p>
+          <p>踩过的坑、跑通的流程、顺手的小工具。</p>
         </a>
       </div>
     </section>
   </div>
 </main>
 """
-    return page_shell("关于", "关于 Melo Zhao：计算蛋白工程师。", body, "", "about.html")
+    return page_shell("关于", "关于 Melo Zhao。", body, "", "about.html")
 
 
 def build_feed(posts):
